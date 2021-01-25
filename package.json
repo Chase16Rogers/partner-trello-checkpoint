@@ -1,0 +1,16 @@
+
+  {
+    "name": "trello-checkpoint",
+    "version": "1.0.0",
+    "scripts": {
+      "build": "npm run setup:client && npm run setup:server && npm run build:client",
+      "setup:client": "cd trello-checkpoint.client && npm i",
+      "setup:server": "cd trello-checkpoint.server && npm i",
+      "build:client": "npm run --prefix trello-checkpoint.client build",
+      "start": "node trello-checkpoint.server/index.js"
+    },
+    "engines": {
+      "node": "^14.15.4"
+    }
+  }
+  
