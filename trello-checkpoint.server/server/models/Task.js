@@ -6,7 +6,8 @@ const Task = new Schema(
     body: { type: String, required: true },
     listId: { type: String, required: true },
     creator: { type: Object, required: true },
-    completed: { type: Boolean }
+    completed: { type: Boolean },
+    creatorId: { type: String, required: true }
   }
 )
 export default Task
