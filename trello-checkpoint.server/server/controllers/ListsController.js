@@ -7,7 +7,7 @@ export class ListsController extends BaseController {
     super('api/lists')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .get('', this.getAll)
+      .get('/:id', this.getAll)
       // .get('/:id', this.getOne)
       .put('/:id', this.put)
       .post('/:id', this.post)
@@ -25,6 +25,7 @@ export class ListsController extends BaseController {
 
   async getAll(req, res, next) {
     try {
+      // const list = { boardId: req.params.id }
       const data = await listService.getAll()
       res.send(data)
     } catch (error) {

@@ -5,6 +5,10 @@ export const api = Axios.create({
   baseURL,
   timeout: 8000
 })
+// export const trelloApi = Axios.create({
+//   baseURL: 'http://localhost:3000',
+//   timeout: 8000
+// })
 
 export const setBearer = function(bearer) {
   api.defaults.headers.authorization = bearer

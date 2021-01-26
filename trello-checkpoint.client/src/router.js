@@ -21,6 +21,18 @@ const routes = [
     name: 'Account',
     component: loadPage('AccountPage'),
     beforeEnter: authGuard
+  },
+  {
+    path: '/active/:id',
+    name: 'Active',
+    component: loadPage('ActiveBoardPage'),
+    beforeEnter: authGuard
+  },
+  {
+    path: '/boards',
+    name: 'BoardsPage',
+    component: loadPage('BoardsPage'),
+    beforeEnter: authGuard
   }
 ]
 

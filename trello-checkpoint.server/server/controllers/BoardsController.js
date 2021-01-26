@@ -35,7 +35,8 @@ export class BoardsController extends BaseController {
 
   async getOne(req, res, next) {
     try {
-      await boardService.getOne(req.params.id)
+      const data = await boardService.getOne(req.params.id)
+      res.send(data)
     } catch (error) {
       next(error)
     }
