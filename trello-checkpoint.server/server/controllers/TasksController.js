@@ -25,7 +25,8 @@ export class TasksController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      const data = await taskService.getAll()
+      const list = { creatorId: req.userInfo.id }
+      const data = await taskService.getAll(list)
       res.send(data)
     } catch (error) {
       next(error)

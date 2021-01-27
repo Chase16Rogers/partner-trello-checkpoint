@@ -25,8 +25,8 @@ export class ListsController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      // const list = { boardId: req.params.id }
-      const data = await listService.getAll()
+      const list = { boardId: req.params.id }
+      const data = await listService.getAll(list)
       res.send(data)
     } catch (error) {
       next(error)

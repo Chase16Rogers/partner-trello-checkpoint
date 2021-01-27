@@ -2,7 +2,7 @@ import { dbContext } from '../db/DbContext'
 import { BadRequest } from '../utils/Errors'
 
 class CommentService {
-  async getAll(userInfo) {
+  async getAll(userInfo = {}) {
     const res = await dbContext.Comments.find(userInfo)
     if (!res) {
       throw new BadRequest('Invalid Id')

@@ -3,6 +3,7 @@
     <div class="row">
       <div class="col">
         <h2>{{ state.active.title }}</h2>
+        <modal-component :modal-prop="{name: 'list', id:state.active._id}" />
       </div>
     </div>
     <div class="row">
@@ -22,8 +23,9 @@ import { useRoute } from 'vue-router'
 import { logger } from '../utils/Logger'
 import ListComponent from '../components/ListComponent.vue'
 import { listsService } from '../services/ListsService'
+import ModalComponent from '../components/ModalComponent.vue'
 export default {
-  components: { ListComponent },
+  components: { ListComponent, ModalComponent },
   name: 'ActiveBoardPage',
   setup() {
     const route = useRoute()

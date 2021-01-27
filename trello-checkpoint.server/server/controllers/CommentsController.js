@@ -7,7 +7,7 @@ export class CommentsController extends BaseController {
     super('api/comments')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .get('', this.getAll)
+      .get('/:id', this.getAll)
       // .get('/:id', this.getOne)
       .put('/:id', this.put)
       .post('/:id', this.post)
@@ -25,7 +25,8 @@ export class CommentsController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      const data = await commentService.getAll()
+      const parent = { taskId: req.params.id }
+      const data = await commentService.getAll(parent)
       res.send(data)
     } catch (error) {
       next(error)

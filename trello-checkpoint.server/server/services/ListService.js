@@ -2,8 +2,8 @@ import { dbContext } from '../db/DbContext'
 import { BadRequest } from '../utils/Errors'
 
 class ListService {
-  async getAll() {
-    const res = await dbContext.Lists.find()
+  async getAll(query = {}) {
+    const res = await dbContext.Lists.find(query)
     if (!res) {
       throw new BadRequest('Invalid Id')
     } return res

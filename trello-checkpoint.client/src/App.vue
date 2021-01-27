@@ -2,7 +2,7 @@
   <header>
     <Navbar />
   </header>
-  <main>
+  <main class="background">
     <router-view v-slot="{Component}">
       <transition name="route" mode="out-in">
         <component :is="Component" />
@@ -30,5 +30,9 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
+.background{
+  background-image: url('https://coolbackgrounds.io/images/unsplash/samuel-zeller-medium-b832fe04.jpg');
+  background-attachment: fixed;
+}
 
 </style>
