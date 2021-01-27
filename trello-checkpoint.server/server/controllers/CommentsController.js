@@ -25,7 +25,7 @@ export class CommentsController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      const parent = { taskId: req.params.id }
+      const parent = { taskId: req.params.id, creatorId: req.userInfo.id }
       const data = await commentService.getAll(parent)
       res.send(data)
     } catch (error) {
@@ -54,6 +54,7 @@ export class CommentsController extends BaseController {
     try {
       const data = req.body
       data.creator = req.userInfo
+      data.creatorId = req.userInfo.id
       data.taskId = req.params.id
       const val = await commentService.post(data)
       res.send(val)

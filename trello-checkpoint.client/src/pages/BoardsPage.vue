@@ -1,8 +1,12 @@
 <template>
-  <div class="container-fluid">
-    <div class="row bg-dark">
-      <div class="col d-flex text-light">
-        <h2>Create a new Board</h2><modal-component :modal-prop="{name:'board', id:'board'}" />
+  <div class="container">
+    <div class="row">
+      <div class="col text-light">
+        <div class="card bg-dark mt-5">
+          <div class="card-body d-flex align-items-center">
+            <h2>Create a new Board</h2><modal-component :modal-prop="{name:'board', id:'board'}" />
+          </div>
+        </div>
       </div>
     </div>
     <div class="row mt-3">

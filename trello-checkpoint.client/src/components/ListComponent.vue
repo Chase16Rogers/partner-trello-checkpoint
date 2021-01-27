@@ -1,23 +1,41 @@
 <template>
-  <div class="col-4">
+  <div class="col-md-4 col-sm-6">
     <div class="card text-white bg-dark mb-3">
-      <div class="card-header">
-        <modal-component :modal-prop="{name: 'task', id: listProp._id}" />
-        {{ listProp.title }}
-        <button class="btn btn-primary"
-                type="button"
-                data-toggle="collapse"
-                :data-target="'#c' + listProp._id"
-                aria-expanded="false"
-                aria-controls="collapseExample"
-                @click="toggleEdit(listProp._id)"
-        >
-          Edit List
-        </button>
+      <div class="card-header list-head">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-6">
+              {{ listProp.title }}
+            </div>
+            <div class="col-6 d-flex">
+              <p class="mb-0">
+                New Task
+              </p>
+              <modal-component :modal-prop="{name: 'task', id: listProp._id}" />
+              <i class="fa fa-pencil pointer"
+                 data-toggle="collapse"
+                 :data-target="'#c' + listProp._id"
+                 aria-expanded="false"
+                 aria-controls="collapseExample"
+                 @click="toggleEdit(listProp._id)"
+              >
+              </i>
+              <i class="fa fa-trash text-danger fa-2x pointer" @click="deleteList" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+
         <div class="collapse" :id="'c' + listProp._id">
           <form @submit.prevent="editList()">
             <h4>Edit List</h4>
-            <input type="text" id="edit" name="edit" v-model="state.edit">
+            <input class="border-0 text-light"
+                   type="text"
+                   id="edit"
+                   name="edit"
+                   placeholder="Edit list here..."
+                   v-model="state.edit"
+                   required
+            >
             <button type="submit" class="btn btn-success">
               Submit Changes
             </button>
@@ -26,9 +44,8 @@
             </button>
           </form>
         </div>
-        <i class="fa fa-trash text-danger fa-2x pointer" @click="deleteList" aria-hidden="true"></i>
       </div>
-      <div class="card-body">
+      <div class="card-body task-body">
         <p class="card-text">
           <task-component v-for="task in listTask()" :key="task._id" :task-prop="task" />
         </p>

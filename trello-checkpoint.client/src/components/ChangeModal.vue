@@ -1,9 +1,6 @@
 <template>
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
-  </button>
-
+  <i class="fa fa-arrows-alt fa-size pointer my-1 mx-1" data-toggle="modal" data-target="#exampleModal" aria-hidden="true"></i>
   <!-- Modal -->
   <div class="modal fade"
        id="exampleModal"
@@ -12,25 +9,25 @@
        aria-labelledby="exampleModalLabel"
        aria-hidden="true"
   >
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">
-            Modal title
+          <h5 class="modal-title text-dark" id="exampleModalLabel">
+            Select the list you want to move this task to
           </h5>
+
+          <span aria-hidden="true">&times;</span>
+        </div>
+        <div class="modal-body d-flex justify-content-center">
           <button-component
             v-for="button in state.buttons"
             :key="button._id"
             :task-id="taskId"
             :button-prop="button"
-            class="close"
+            class=""
             data-dismiss="modal"
             aria-label="Close"
           />
-          <span aria-hidden="true">&times;</span>
-        </div>
-        <div class="modal-body">
-          ...
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">

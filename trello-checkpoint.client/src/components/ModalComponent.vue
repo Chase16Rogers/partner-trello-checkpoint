@@ -1,9 +1,6 @@
 <template>
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" :data-target="'#a' + modalProp.id">
-    +
-  </button>
-
+  <i class="fa fa-plus-circle fa-size pointer my-1 mx-1" aria-hidden="true" data-toggle="modal" :data-target="'#a' + modalProp.id"></i>
   <!-- Modal -->
   <div class="modal fade"
        :id="'a' + modalProp.id"
@@ -12,7 +9,7 @@
        aria-labelledby="exampleModalLabel"
        aria-hidden="true"
   >
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title text-dark" id="exampleModalLabel">
@@ -24,11 +21,17 @@
         </div>
         <form @submit.prevent="create()">
           <div class="modal-body">
-            <input name="create" type="text" v-model="state.new" required>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            <input class="border-0 text-dark"
+                   :placeholder="modalProp.name+ '...'"
+                   name="create"
+                   type="text"
+                   v-model="state.new"
+                   required
+            >
+            <button type="button" class="btn btn-outline-secondary mx-3" data-dismiss="modal">
               Close
             </button>
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-outline-primary">
               Save changes
             </button>
           </div>
@@ -88,5 +91,7 @@ export default {
 }
 </script>
 <style scoped>
-
+::placeholder{
+  color: black;
+}
 </style>

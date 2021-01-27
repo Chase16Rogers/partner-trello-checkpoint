@@ -2,15 +2,22 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <h2>{{ state.active.title }}</h2>
-        <modal-component :modal-prop="{name: 'list', id:state.active._id}" />
+        <div class="card text-white bg-dark mb-3">
+          <div class="card-header list-head d-flex align-items-center justify-content-center">
+            <h2>{{ state.active.title }}</h2>
+            <h5 class="ml-5 mr-1 mb-0">
+              Create new list
+            </h5>
+            <modal-component :modal-prop="{name: 'list', id:state.active._id}" />
+          </div>
+        </div>
+        <div class="row">
+          <list-component v-for="list in state.list"
+                          :key="list._id"
+                          :list-prop="list"
+          />
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <list-component v-for="list in state.list"
-                      :key="list._id"
-                      :list-prop="list"
-      />
     </div>
   </div>
 </template>

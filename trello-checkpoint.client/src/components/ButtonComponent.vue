@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-warning" @click="changeList(buttonProp._id)">
+  <button class="btn btn-outline-warning mx-1" @click="changeList(buttonProp._id)">
     {{ buttonProp.title }}
   </button>
 </template>

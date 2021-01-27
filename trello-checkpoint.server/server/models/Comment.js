@@ -5,7 +5,8 @@ const Comment = new Schema(
   {
     body: { type: String, required: true },
     taskId: { type: String, required: true },
-    creator: { type: Object, required: true }
+    creator: { type: Object, required: true },
+    creatorId: { type: String, required: true }
   }
 )
 export default Comment

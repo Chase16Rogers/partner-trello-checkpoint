@@ -1,6 +1,6 @@
 <template>
-  <div class="col-6">
-    <div class="card shadow-lg bg-dark">
+  <div class="col-12 my-2">
+    <div class="card bg-dark">
       <div class="card-body container-fluid">
         <div class="row">
           <div class="col-9">
@@ -9,8 +9,8 @@
             </router-link>
           </div>
 
-          <div class="col-3">
-            <i class="fa fa-pencil text-light fa-2x"
+          <div class="col-3 d-flex align-items-center justify-content-end">
+            <i class="fa fa-pencil text-light fa-2x mr-2"
                data-toggle="collapse"
                :data-target="'#c' + boardProp._id"
                aria-expanded="false"
@@ -27,7 +27,7 @@
         <div class="d-flex justify-content-center mb-2">
           <form @submit.prevent="editBoard()">
             <h4>Edit Board</h4>
-            <input type="text" id="edit" name="edit" v-model="state.edit">
+            <input type="text" id="edit" name="edit" required v-model="state.edit">
             <button type="submit" class="btn btn-success mx-3">
               Submit Changes
             </button>

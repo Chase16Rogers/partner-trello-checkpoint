@@ -1,24 +1,36 @@
 <template>
-  <div class="card text-white bg-primary mb-3">
-    <div class="card card-body text-dark d-flex">
-      <i class="fa fa-trash text-danger pointer" @click="deleteComment" aria-hidden="true"></i>
-      <button class="btn btn-primary"
-              type="button"
-              data-toggle="collapse"
-              :data-target="'#c' + commProp._id"
-              aria-expanded="false"
-              aria-controls="collapseExample"
-              @click="toggleEdit(commProp._id)"
-      >
-        Edit
-      </button>
-      <h2>{{ commProp.creator.name }}</h2>
-      <h2>{{ commProp.body }}</h2>
+  <div class="card text-white bg-primary mb-3 my-3">
+    <div class="card card-body px-1 pb-2 text-dark d-flex">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-10">
+            <h5>{{ commProp.body }}</h5>
+          </div>
+          <div class="col-2">
+            <div class="d-flex">
+              <i class="fa fa-pencil pointer"
+                 data-toggle="collapse"
+                 :data-target="'#c' + commProp._id"
+                 aria-expanded="false"
+                 aria-controls="collapseExample"
+                 @click="toggleEdit(commProp._id)"
+              >
+              </i>
+              <i class="fa fa-trash text-danger pointer" @click="deleteComment" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <small><b>{{ commProp.creator.name }}</b></small>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="collapse" :id="'c' + commProp._id">
       <form @submit.prevent="editComment()">
         <h4>Edit Comment</h4>
-        <input type="text" id="edit" name="edit" v-model="state.edit">
+        <input type="text" id="edit" name="edit" v-model="state.edit" required>
         <button type="submit" class="btn btn-success">
           Submit Changes
         </button>

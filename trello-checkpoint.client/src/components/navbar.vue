@@ -32,7 +32,7 @@
             About
           </router-link>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="user.isAuthenticated">
           <router-link :to="{ name: 'BoardsPage' }" class="nav-link">
             Boards
           </router-link>

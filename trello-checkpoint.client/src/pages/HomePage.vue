@@ -1,15 +1,41 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo">
-    <h1 class="my-5 bg-dark text-light p-3 rounded d-flex align-items-center">
-      <span class="mx-2 text-white">Vue 3 Starter</span>
-    </h1>
+  <div class="container-fluid d-flex align-items-center justify-content-center">
+    <div class="row">
+      <div class="col text-center">
+        <!-- <div class="card">
+          <div class="card-body"> -->
+        <div v-if="state.user.isAuthenticated">
+          <h1 class="veryBig">
+            <b>Welcome</b>
+          </h1>
+          <h1>
+            <b>
+              {{ state.user.name }}</b>
+          </h1>
+        </div>
+        <!-- </div>
+        </div> -->
+        <h1 v-else class="veryBig">
+          <b>LOGIN</b>
+        </h1>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { computed, reactive } from 'vue'
+import { AppState } from '../AppState'
 export default {
-  name: 'Home'
+  name: 'Home',
+  setup() {
+    const state = reactive({
+      user: computed(() => AppState.user)
+    })
+    return {
+      state
+    }
+  }
 }
 </script>
 
@@ -21,5 +47,9 @@ export default {
     height: 200px;
     width: 200px;
   }
+}
+.veryBig{
+  font-size: 20vw;
+  text-shadow: 6px 6px 20px white;
 }
 </style>
