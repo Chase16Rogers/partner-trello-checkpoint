@@ -1,6 +1,6 @@
 import Axios from 'axios'
 
-export const baseURL = window.location.origin.includes('localhost') ? 'https://partner-trello.herokuapp.com/' : ''
+export const baseURL = window.location.origin.includes('localhost') ? 'https://project-manager-checkpoint.herokuapp.com' : ''
 export const api = Axios.create({
   baseURL,
   timeout: 8000
