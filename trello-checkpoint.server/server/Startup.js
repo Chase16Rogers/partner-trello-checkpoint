@@ -9,7 +9,7 @@ import { logger } from './utils/Logger'
 export default class Startup {
   static ConfigureGlobalMiddleware(app) {
     // NOTE Configure and Register Middleware
-    const whitelist = ['http://localhost:8080']
+    const whitelist = ['http://localhost:8080', 'https://project-manager-checkpoint.herokuapp.com/']
     const corsOptions = {
       origin: function(origin, callback) {
         const originIsWhitelisted = whitelist.indexOf(origin) !== -1
