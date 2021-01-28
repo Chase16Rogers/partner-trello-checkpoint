@@ -9,6 +9,7 @@
           <div class="col-2">
             <div class="d-flex">
               <i class="fa fa-pencil pointer"
+
                  data-toggle="collapse"
                  :data-target="'#c' + commProp._id"
                  aria-expanded="false"
@@ -76,7 +77,8 @@ export default {
         }
       },
       toggleEdit(id) {
-        if (AppState.activeComment) { $('#c' + AppState.activeComment).collapse('hide') }
+        console.log(id)
+        if (AppState.activeComment) { $(`#c${AppState.activeComment}`).collapse('hide') }
         AppState.activeComment = id
       },
       async editComment() {

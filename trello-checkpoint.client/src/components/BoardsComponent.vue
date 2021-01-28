@@ -10,7 +10,7 @@
           </div>
 
           <div class="col-3 d-flex align-items-center justify-content-end">
-            <i class="fa fa-pencil text-light fa-2x mr-2"
+            <i class="fa fa-pencil text-light fa-2x mr-2 pointer"
                data-toggle="collapse"
                :data-target="'#c' + boardProp._id"
                aria-expanded="false"
@@ -24,14 +24,19 @@
         </div>
       </div>
       <div class="collapse " :id="'c' + boardProp._id">
-        <div class="d-flex justify-content-center mb-2">
+        <div class="d-flex justify-content-center mb-2 text-light">
           <form @submit.prevent="editBoard()">
             <h4>Edit Board</h4>
-            <input type="text" id="edit" name="edit" required v-model="state.edit">
-            <button type="submit" class="btn btn-success mx-3">
+            <input type="text"
+                   id="edit"
+                   name="edit"
+                   required
+                   v-model="state.edit"
+            >
+            <button type="submit" class="btn btn-success mx-3" :data-target="'#c' + boardProp._id">
               Submit Changes
             </button>
-            <button type="button" class="btn btn-danger" @click="state.edit=''">
+            <button type="button" class="btn btn-danger" :data-target="'#c' + boardProp._id" data-toggle="collapse" @click="state.edit=''">
               Cancel
             </button>
           </form>
@@ -68,6 +73,7 @@ export default {
         try {
           const data = { title: state.edit }
           await boardService.editBoard(props.boardProp._id, data)
+          $(`#c${props.boardProp._id}`).collapse('hide')
         } catch (error) {
           logger.error(error)
         }
@@ -84,5 +90,7 @@ export default {
 }
 </script>
 <style scoped>
-
+.pointer:hover{
+  cursor: pointer;
+}
 </style>

@@ -1,9 +1,9 @@
 <template>
   <!-- Button trigger modal -->
-  <i class="fa fa-arrows-alt fa-size pointer my-1 mx-1" data-toggle="modal" data-target="#exampleModal" aria-hidden="true"></i>
+  <i class="fa fa-arrows-alt fa-size pointer my-1 mx-1" data-toggle="modal" :data-target="'#m'+ taskId " aria-hidden="true"></i>
   <!-- Modal -->
   <div class="modal fade"
-       id="exampleModal"
+       :id="'m' + taskId"
        tabindex="-1"
        role="dialog"
        aria-labelledby="exampleModalLabel"
