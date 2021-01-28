@@ -27,14 +27,21 @@
         </div>
       </div>
     </div>
-    <div class="collapse" :id="'c' + commProp._id">
+    <div class="collapse p-2" :id="'c' + commProp._id">
       <form @submit.prevent="editComment()">
         <h4>Edit Comment</h4>
-        <input type="text" id="edit" name="edit" v-model="state.edit" required>
-        <button type="submit" class="btn btn-success">
+        <input type="text"
+               class="border-0"
+               id="edit"
+               name="edit"
+               placeholder="Edit comment..."
+               v-model="state.edit"
+               required
+        >
+        <button type="submit" data-toggle="collapse" :data-target="'#c' + commProp._id" class="btn btn-success">
           Submit Changes
         </button>
-        <button type="button" class="btn btn-danger" @click="state.edit=''">
+        <button type="button" class="btn btn-danger" data-toggle="collapse" :data-target="'#c' + commProp._id" @click="state.edit = ''">
           Cancel
         </button>
       </form>
@@ -47,12 +54,13 @@ import { AppState } from '../AppState'
 import { commentsService } from '../services/CommentsService'
 import { logger } from '../utils/Logger'
 import $ from 'jquery'
-import { reactive } from 'vue'
+import { computed, reactive } from 'vue'
 export default {
   name: 'CommentComponent',
   props: {
     commProp: { type: Object, required: true },
-    taskId: { type: String, required: true }
+    taskId: { type: String, required: true },
+    toggle: computed(() => AppState.activeComment)
   },
   setup(props) {
     const state = reactive({
@@ -68,13 +76,14 @@ export default {
         }
       },
       toggleEdit(id) {
-        if (id) { $(`#c${AppState.activeComment}`).collapse('hide') }
+        if (AppState.activeComment) { $('#c' + AppState.activeComment).collapse('hide') }
         AppState.activeComment = id
       },
       async editComment() {
         try {
           const data = { body: state.edit }
           await commentsService.edit(props.commProp._id, data)
+          state.edit = ''
         } catch (error) {
           logger.error(error)
         }

@@ -29,27 +29,27 @@
           </div>
         </div>
       </div>
-
-      <div class="collapse task-body" :id="'c' + taskProp._id">
-        <form @submit.prevent="editTask()">
-          <h4>Edit Task</h4>
-          <input type="text"
-                 class="border-0 nice-input mb-1 text-light"
-                 placeholder="Your comment here..."
-                 id="edit"
-                 name="edit"
-                 v-model="state.edit"
-                 required
-          >
-          <button type="submit" class="btn btn-success">
-            Submit Changes
-          </button>
-          <button type="button" class="btn btn-danger" @click="commentCancel()">
-            Cancel
-          </button>
-        </form>
-      </div>
     </div>
+    <div class="collapse task-body p-2" :id="'c' + taskProp._id">
+      <form @submit.prevent="editTask()">
+        <h4>Edit Task</h4>
+        <input type="text"
+               class="border-0 nice-input mb-1 text-light"
+               placeholder="Edit task here..."
+               id="edit"
+               name="edit"
+               v-model="state.edit"
+               required
+        >
+        <button type="submit" class="btn btn-success">
+          Submit Changes
+        </button>
+        <button type="button" class="btn btn-danger" @click="commentCancel()">
+          Cancel
+        </button>
+      </form>
+    </div>
+
     <div class="collapse" :id="'t' + taskProp._id">
       <div class="card card-body text-dark">
         <div class="d-flex">

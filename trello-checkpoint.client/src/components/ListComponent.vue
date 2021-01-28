@@ -7,12 +7,12 @@
             <div class="col-6">
               {{ listProp.title }}
             </div>
-            <div class="col-6 d-flex">
+            <div class="col-6 d-flex justify-content-end">
               <p class="mb-0">
                 New Task
               </p>
               <modal-component :modal-prop="{name: 'task', id: listProp._id}" />
-              <i class="fa fa-pencil pointer"
+              <i class="fa fa-pencil pointer mx-1"
                  data-toggle="collapse"
                  :data-target="'#c' + listProp._id"
                  aria-expanded="false"
@@ -36,10 +36,19 @@
                    v-model="state.edit"
                    required
             >
-            <button type="submit" class="btn btn-success">
+            <button type="submit"
+                    class="btn btn-success"
+                    data-toggle="collapse"
+                    :data-target="'#c' + listProp._id"
+            >
               Submit Changes
             </button>
-            <button type="button" class="btn btn-danger" @click="state.edit=''">
+            <button type="button"
+                    class="btn btn-danger"
+                    data-toggle="collapse"
+                    :data-target="'#c' + listProp._id"
+                    @click="state.edit=''"
+            >
               Cancel
             </button>
           </form>
