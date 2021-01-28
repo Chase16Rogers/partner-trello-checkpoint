@@ -15,12 +15,12 @@
     "popper.js": "^1.16.1",
     "socket.io-client": "^2.2.0",
     "vue": "^3.0.0-0",
-    "vue-router": "^4.0.0-0",
-    "@vue/cli-service": "~4.5.10"
+    "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "~4.5.10",
     "@vue/cli-plugin-router": "~4.5.10",
+    "@vue/cli-service": "~4.5.10",
     "@vue/compiler-sfc": "^3.0.5",
     "@vue/eslint-config-standard": "^6.0.0",
     "eslint": "^7.18.0",
