@@ -31,6 +31,21 @@ class BoardService {
   }
 
   async delete(id) {
+    const lists = await dbContext.Lists.find({ boardId: id })
+    console.log('dl' + lists)
+    if (lists) {
+      lists.forEach(async l => {
+        const tasks = await dbContext.Tasks.find({ listId: l._id })
+        console.log(tasks)
+        if (!tasks) {
+          await dbContext.Lists.findOneAndDelete({ _id: l._id })
+        }
+        tasks.forEach(async t => {
+          await dbContext.Comments.deleteMany({ taskId: t._id })
+          await dbContext.Tasks.findOneAndDelete({ _id: l._id })
+        })
+      })
+    }
     const res = await dbContext.Boards.findByIdAndDelete(id)
     if (!res) {
       throw new BadRequest('Invalid Id')
