@@ -88,7 +88,7 @@ export default
       async getComments(id) {
         try {
           AppState.comments = []
-          console.log('ID' + AppState.activeTask)
+          // console.log('ID' + AppState.activeTask)
           if (id) { $(`#t${AppState.activeTask}`).collapse('hide') }
           await commentsService.getAll(id)
           AppState.activeTask = id

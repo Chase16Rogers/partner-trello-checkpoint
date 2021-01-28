@@ -8,7 +8,7 @@ class BoardsService {
   async getAll() {
     const res = await api.get('api/boards')
     AppState.boards = res.data
-    console.log(res.data)
+    // console.log(res.data)
   }
 
   async getOne(id) {

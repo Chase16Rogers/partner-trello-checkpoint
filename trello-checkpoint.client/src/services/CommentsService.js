@@ -4,7 +4,7 @@ import { api } from './AxiosService'
 class CommentsService {
   async getAll(id) {
     const res = await api.get('api/comments/' + id)
-    console.log(res.data)
+    // console.log(res.data)
     AppState.comments = res.data
   }
 
@@ -20,7 +20,7 @@ class CommentsService {
   }
 
   async edit(id, data) {
-    console.log('it got here')
+    // console.log('it got here')
     const res = await api.put('api/comments/' + id, data)
     const comm = AppState.comments.findIndex(c => c._id === id)
     AppState.comments.splice(comm, 1, res.data)
