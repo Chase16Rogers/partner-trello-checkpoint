@@ -14,7 +14,7 @@
             <h4 class="d-flex mx-2">
               here
             </h4>
-          </router-link> to see you Boards or start a new project
+          </router-link> to see your Boards or start a new project
         </h4>
         <!-- </div> -->
       </div>
