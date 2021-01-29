@@ -1,5 +1,6 @@
 import { AppState } from '../AppState'
 import { api } from './AxiosService'
+import $ from 'jquery'
 
 class CommentsService {
   async getAll(id) {
@@ -24,6 +25,7 @@ class CommentsService {
     const res = await api.put('api/comments/' + id, data)
     const comm = AppState.comments.findIndex(c => c._id === id)
     AppState.comments.splice(comm, 1, res.data)
+    $(`#c${id}`).collapse('hide')
   }
 }
 export const commentsService = new CommentsService()

@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-      <div class="collapse " :id="'c' + boardProp._id">
+      <div class="collapse" :id="'c' + boardProp._id">
         <div class="d-flex justify-content-center mb-2 text-light">
           <form @submit.prevent="editBoard()">
             <h4>Edit Board</h4>

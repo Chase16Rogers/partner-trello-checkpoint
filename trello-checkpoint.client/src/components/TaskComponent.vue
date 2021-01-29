@@ -58,7 +58,7 @@
         </div>
 
         <!-- <i class="fa fa-trash text-danger" @click="deleteComment" aria-hidden="true"></i> -->
-        <comment-component v-for="comm in state.comments" :key="comm._id" :comm-prop="comm" :task-id="taskProp._id" />
+        <comment-component v-for="comm in state.comments" :key="comm._id" :comm-prop="comm" />
       </div>
     </div>
   </div>

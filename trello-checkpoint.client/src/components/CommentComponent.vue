@@ -39,7 +39,7 @@
                v-model="state.edit"
                required
         >
-        <button type="submit" data-toggle="collapse" :data-target="'#c' + commProp._id" class="btn btn-success">
+        <button type="submit" :data-target="'#c' + commProp._id" class="btn btn-success">
           Submit Changes
         </button>
         <button type="button" class="btn btn-danger" data-toggle="collapse" :data-target="'#c' + commProp._id" @click="state.edit = ''">
@@ -54,14 +54,14 @@
 import { AppState } from '../AppState'
 import { commentsService } from '../services/CommentsService'
 import { logger } from '../utils/Logger'
-import $ from 'jquery'
-import { computed, reactive } from 'vue'
+import jQuery from 'jquery'
+import { reactive } from 'vue'
 export default {
   name: 'CommentComponent',
   props: {
-    commProp: { type: Object, required: true },
-    taskId: { type: String, required: true },
-    toggle: computed(() => AppState.activeComment)
+    commProp: { type: Object, required: true }
+    // taskId: { type: String, required: true }
+
   },
   setup(props) {
     const state = reactive({
@@ -77,14 +77,14 @@ export default {
         }
       },
       toggleEdit(id) {
-        console.log(id)
-        if (AppState.activeComment) { $(`#c${AppState.activeComment}`).collapse('hide') }
+        jQuery(`#c${AppState.activeComment}`).collapse('hide')
         AppState.activeComment = id
       },
       async editComment() {
         try {
           const data = { body: state.edit }
           await commentsService.edit(props.commProp._id, data)
+          // console.log(props.commProp._id)
           state.edit = ''
         } catch (error) {
           logger.error(error)
