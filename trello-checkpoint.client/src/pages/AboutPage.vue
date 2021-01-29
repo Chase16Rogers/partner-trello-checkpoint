@@ -2,7 +2,9 @@
   <div class="container">
     <div class="row justify-content-center mt-5">
       <div class="about col text-center d-flex justify-content-center flex-column">
-        <h1><b>Welcome to Project Manager</b></h1>
+        <h1 class="display-3 mb-3">
+          <b>Welcome to Project Manager</b>
+        </h1>
         <h4>This Website is designed to help you manage complex Projects.</h4>
         <h4>Built over one whole week</h4>
         <h4>Designed By Shiwani and Chase in order to pass the Checkpoint</h4>
